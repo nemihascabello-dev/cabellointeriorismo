@@ -1,30 +1,35 @@
-# CABELLO | Cocinas & Interiores · Web editorial V7
+# CABELLO | Cocinas & Interiores · Web HTML V8
 
-Sitio web estático completo para GitHub Pages. Siete páginas HTML navegables, diseño editorial oscuro, turquesa #72CBC6 y distintas cabeceras adaptativas para escritorio/tablet/móvil. No requiere WordPress ni servidor PHP.
+Maqueta navegable preparada para GitHub Pages. Estilo Dark Editorial con fotografías reales de trabajos realizados por Nemihas Cabello.
 
-## Subir a GitHub
-1. Crea un repositorio **público** en GitHub. También puedes elegir uno llamado `usuario.github.io`.
-2. Extrae este ZIP. **Sube todo el contenido de la carpeta `CABELLO_GitHub_V7_Imagenes` a la raíz del repositorio** (index.html, las demás páginas, assets/, CNAME, etc.). No subas solo el ZIP.
-3. En GitHub: Settings > Pages > Build and deployment > Deploy from a branch. Selecciona `main` y `/(root)`.
-4. En Settings > Pages, configura el dominio `cabellointeriorismo.com` y, cuando esté configurado el DNS, activa **Enforce HTTPS**.
-5. En Cloudflare, conserva el dominio y configura los registros de GitHub Pages según su documentación oficial. Para el dominio raíz, las cuatro direcciones IPv4 habituales son 185.199.108.153, .109.153, .110.153 y .111.153. Para www, el CNAME apunta a TU_USUARIO.github.io (no a un texto literal). Comprueba los DNS existentes antes de añadirlos. Para configurar por primera vez, usa DNS only si el proxy crea conflictos.
-6. Abre `index.html` en el navegador o entra a la URL publicada para navegar las siete páginas.
+## Vista previa
 
-## Imágenes
-Están dentro de `assets/images/`: seis escenas conceptuales generadas digitalmente, cada una en archivo web optimizado `.webp`, variante reducida `-720.webp` y recorte vertical `-mobile.webp`. El HTML utiliza srcset/sizes, lazy loading para imágenes secundarias y precarga diferenciada de portada.
+Abre `index.html` en el navegador. El menú enlaza a las ocho páginas HTML. Las fotografías están en `assets/img/` y están incluidas en este ZIP: no se necesitan enlaces externos para las imágenes.
 
-Las imágenes **son visualizaciones conceptuales** para mostrar la propuesta a Nemihas; no son proyectos ejecutados ni fotografías reales de trabajos de la empresa. Sustituirlas más adelante por fotografías propias conservando nombres de archivo o actualizando las rutas HTML.
+## Publicación en GitHub Pages
 
-## Antes del lanzamiento comercial
-- Sustituye los renders conceptuales por trabajos reales o identifica con claridad lo que es inspiración.
-- Añade el teléfono de WhatsApp, correo y datos de contacto reales. Ningún contacto se ha inventado.
-- El formulario de contacto es **demostrativo**: prepara un texto para copiar, no envía solicitudes. Debe conectarse a un servicio real antes de recibir clientes.
-- Confirma los servicios que Nemihas efectivamente ofrecerá y los textos de garantía, condiciones y disponibilidad.
-- Añade aviso de privacidad y las medidas de consentimiento necesarias si instalas herramientas analíticas/marketing o formularios con datos personales.
-- Comprueba responsive real, accesibilidad y rendimiento en el dominio publicado.
+1. Descomprime el ZIP.
+2. Sube **el contenido de esta carpeta**, no la carpeta contenedora, a la raíz del repositorio `nemihascabello-dev/cabellointeriorismo`.
+3. En Settings > Pages, mantén Source: Deploy from a branch, main, /(root).
+4. El fichero `CNAME` conserva el dominio `cabellointeriorismo.com`.
+5. Antes de publicar como sitio comercial, incorpora medios de contacto reales y conecta el formulario a un servicio o canal autorizado.
 
-## Archivos principales
-- index.html, cocinas.html, banos.html, mobiliario.html, proyectos.html, nosotros.html, contacto.html
-- assets/styles.css, assets/site.js, assets/favicon.svg
-- assets/images/ (imágenes web)
-- CNAME, sitemap.xml, robots.txt, .nojekyll
+## Aviso importante
+
+- Las fotografías integradas corresponden a trabajos reales realizados por Nemihas Cabello y se presentan como portafolio de CABELLO | Cocinas & Interiores.
+- El formulario **no envía ni almacena datos**: genera un texto copiable. Es una función demostrativa.
+- Los enlaces de contacto llevan a la página de formulario demostrativo. No hemos inventado teléfonos ni correos.
+- No se usa WordPress, Elementor, frameworks JavaScript ni servicios backend. La tipografía Google Fonts requiere internet; hay fuentes alternativas locales.
+- Estilos adaptados a escritorio (≥1200), tablet (768–1199) y móvil (<768). Hay tres encabezados mutuamente excluyentes por CSS; el menú oculto está inaccesible hasta abrirse.
+- SEO básico: títulos, descripciones, canonical, sitemap, robots y texto alternativo extraído del inventario de fotografías.
+
+## Identidad
+
+- Fondo: #111716 / #181E1D
+- Blanco cálido: #F4F3EF
+- Turquesa: #72CBC6
+- Identidad tipográfica provisional, sin logotipo gráfico aprobado.
+
+## Antes de pasar a producción
+
+Confirmar forma de contacto real, privacidad, datos comerciales y cualquier detalle operativo antes de la publicación final. Validar en móvil y desktop real y PageSpeed.
