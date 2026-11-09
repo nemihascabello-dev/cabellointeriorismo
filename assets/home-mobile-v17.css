@@ -1,0 +1,19 @@
+@media(max-width:767px){
+  .home-page .site-header{background:rgba(16,16,16,.69);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+  .home-page .header-layout{height:56px}
+  .home-page .menu-toggle{border:0;background:transparent}
+  .home-page .dropdown{max-height:calc(100dvh - 56px)}
+  .hero.hero--home{display:block;height:auto;min-height:0;background:#f7f5ef;color:#161616}
+  .hero--home .hero-photography{position:relative;inset:auto;z-index:0;width:100%;height:clamp(260px,80vw,450px)}
+  .hero--home .hero-photography img{object-position:center 52%;filter:none}
+  .hero--home .hero-shadow,.hero--home .hero-footnote{display:none}
+  .hero--home .hero-layout{padding:25px 0 32px}
+  .hero--home .overline{color:#514d46;font-size:.62rem}
+  .hero--home h1{font-size:clamp(2.35rem,9.6vw,4.4rem);margin:12px 0;line-height:1.02}
+  .hero--home h1 i{color:#383530}
+  .hero--home .hero-description{color:#47443e;font-size:.94rem;line-height:1.5}
+  .hero--home .hero-buttons{flex-direction:row;align-items:center;gap:8px 16px;margin-top:18px}
+  .hero--home .hero-buttons .button{min-height:44px;padding:10px 14px;justify-content:center;font-size:.79rem}
+  .hero--home .button--primary{background:#151515;color:white;border-color:#151515}
+  .hero--home .hero-buttons .button--outline{color:#232323;background:transparent;border:0;padding-inline:0;text-decoration:underline;text-underline-offset:4px;backdrop-filter:none}
+}
