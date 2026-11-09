@@ -1,0 +1,25 @@
+AUDITORÍA VISUAL OBLIGATORIA DE CABELLO V11
+
+Descomprime el ZIP adjunto y sirve la web estática en un navegador de ChatGPT Work. Revisa de verdad todas las páginas: index.html, cocinas.html, reformas.html, banos.html, mobiliario.html, proyectos.html, nosotros.html y contacto.html.
+
+No publiques nada en GitHub ni modifiques cabellointeriorismo.com hasta recibir mi autorización.
+
+CRITERIOS DE DISEÑO QUE NO SE PUEDEN PERDER:
+- Dark Editorial: fondos negros y grafito con degradados y sombras suaves, blanco para títulos y textos, turquesa #72CBC6 para llamadas a la acción.
+- Diseño premium, sobrio, elegante y muy visual, con fotos grandes y espacios amplios, NO catálogo de tarjetas pequeñas.
+- Todas las fotos deben ser reales del padre, Nemihas Cabello, dentro de assets/trabajos. No usar imágenes IA, ni siquiera en la portada o el cierre.
+- No usar emojis en ningún texto de la web.
+- La propuesta comercial es cocinas con estética de lujo y precio accesible, renovaciones, reparaciones y trabajos puntuales de mobiliario. Mantener el titular aprobado: «Cocinas de lujo, sin pagar de más».
+
+PRUEBAS A REALIZAR EN EL NAVEGADOR:
+1. Capturar pantalla completa de la HOME en anchos 1440, 1024, 768, 430, 390 y 360. Revisar también las demás páginas.
+2. Corregir scroll horizontal, fotos cortadas incorrectamente, encabezados apretados, títulos solapados, botones fuera de pantalla, contraste y espacios irregulares.
+3. Comprobar que se ve SOLO una cabecera según el dispositivo: escritorio, tablet o móvil.
+4. Abrir y cerrar menús móvil/tablet, probar enlaces y navegación por teclado.
+5. Probar filtros de galería y ampliación de fotos, incluidos el botón cerrar y la tecla Escape.
+6. Confirmar visualmente que hero y CTA final usan fotos reales de assets/trabajos.
+7. Probar el formulario solo como demo de copia, dejando claro que NO envía consultas.
+8. Verificar que ninguna página usa imágenes externas o archivos que no existan en el ZIP.
+9. Evaluar y ajustar el peso de imágenes, velocidad y jerarquía SEO sin borrar trabajos reales ni alterar su apariencia.
+
+Entrega un ZIP corregido, un informe de incidencias resueltas y capturas de escritorio/tablet/móvil. No subas ningún cambio sin mi autorización.

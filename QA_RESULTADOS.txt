@@ -1,0 +1,19 @@
+CABELLO V11 - REVISIÓN ESTÁTICA PREVIA A WORK
+
+Estado: ESTRUCTURA CORRECTA
+Páginas HTML: 8
+Fotografías reales: 30
+Archivos de fotografías y variantes: 60
+Enlaces internos e imágenes: comprobados
+Metadatos, un solo H1 y tres variantes de cabecera por página: comprobados
+Sintaxis CSS: 0 errores
+Sintaxis JS: correcta
+Imágenes IA en el paquete: ninguna
+Emojis dentro de la web: ninguno detectado
+Datos de contacto inventados: ninguno
+Formulario: demostrativo y no envía consultas
+
+LÍMITE DE LA REVISIÓN: Chrome en este entorno devuelve ERR_BLOCKED_BY_ADMINISTRATOR tanto para http://localhost como para file://. Las pruebas visuales de pantallas y navegación deben realizarse con el navegador de ChatGPT Work antes de publicar.
+
+Problemas detectados (0):
+Ninguno en la revisión estática.

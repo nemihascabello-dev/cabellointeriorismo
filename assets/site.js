@@ -1,58 +1,10 @@
-'use strict';
-(() => {
-  const menuButtons = [...document.querySelectorAll('[data-menu-button]')];
-  function closeMenus(){
-    for (const btn of menuButtons){
-      btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');
-      const panel = document.getElementById(btn.dataset.menuButton);if(panel) panel.hidden = true;
-    }
-  }
-  for (const btn of menuButtons) {
-    btn.addEventListener('click',()=>{
-      const panel=document.getElementById(btn.dataset.menuButton);if(!panel)return;
-      const wasOpen = btn.getAttribute('aria-expanded') === 'true';
-      closeMenus();
-      if(!wasOpen){panel.hidden=false;btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','Cerrar menú');}
-    });
-  }
-  document.addEventListener('keydown', e => {if(e.key==='Escape')closeMenus();});
-  document.addEventListener('click',e=> {if(!e.target.closest('.site-header'))closeMenus();});
-  document.querySelectorAll('.menu-panel a').forEach(a=>a.addEventListener('click',closeMenus));
-  window.addEventListener('resize', closeMenus, {passive:true});
-  // Interactive inspiration gallery: only one category is visible at a time.
-  const filterButtons=[...document.querySelectorAll('[data-filter]')];
-  const photos=[...document.querySelectorAll('.gallery-item[data-category]')];
-  for (const btn of filterButtons) btn.addEventListener('click',()=>{
-    const choice=btn.dataset.filter;
-    for(const button of filterButtons){const selected=button===btn;button.classList.toggle('active',selected);button.setAttribute('aria-pressed',String(selected));}
-    for(const item of photos) item.hidden = choice!=='all' && item.dataset.category!==choice;
-  });
-  const dialog=document.getElementById('gallery-lightbox');
-  if(dialog){
-    const preview=dialog.querySelector('img');const caption=dialog.querySelector('p');
-    for(const item of photos) item.addEventListener('click',()=>{
-      preview.src=item.dataset.photo;preview.alt=item.dataset.alt;
-      caption.textContent=`${item.dataset.label} · ${item.dataset.alt}`;
-      if(typeof dialog.showModal==='function')dialog.showModal();
-    });
-    dialog.querySelector('.lightbox-close')?.addEventListener('click',()=>dialog.close());
-    dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-  }
-  // This form is deliberately a working *preview*, not a false submission.
-  const form=document.getElementById('quote-form');
-  if(form){
-    const feedback=document.getElementById('form-feedback');const prepared=document.getElementById('prepared');const textArea=document.getElementById('prepared-text');
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      if(!form.reportValidity()){feedback.textContent='Completa los campos obligatorios para preparar tu consulta.';return;}
-      const d=new FormData(form);
-      const summary=['Consulta preparada para CABELLO | Cocinas & Interiores',`Nombre: ${d.get('nombre')}`,`Teléfono o WhatsApp: ${d.get('telefono')}`,`Proyecto: ${d.get('servicio')}`,`Zona: ${d.get('zona') || 'No indicada'}`,`Medidas: ${d.get('medidas') || 'Pendientes'}`,`Presupuesto orientativo: ${d.get('presupuesto') || 'No indicado'}`,'',`Mensaje: ${d.get('mensaje')}`,'','Nota: consulta preparada en una maqueta; no se ha enviado automáticamente.'].join('\n');
-      textArea.value=summary;prepared.hidden=false;feedback.textContent='Consulta preparada. Puedes copiarla, pero todavía no se ha enviado.';
-      prepared.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
-    });
-    document.getElementById('copy-prepared')?.addEventListener('click',async(e)=>{
-      try{await navigator.clipboard.writeText(textArea.value);e.currentTarget.textContent='Consulta copiada ✓';}
-      catch{ textArea.focus();textArea.select();e.currentTarget.textContent='Selecciona el texto y cópialo';}
-    });
-  }
+(()=>{'use strict';
+const toggleButtons=[...document.querySelectorAll('[data-menu-target]')];
+const closeAll=()=>{toggleButtons.forEach(b=>{b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Abrir menú de navegación');const panel=document.getElementById(b.dataset.menuTarget);if(panel)panel.hidden=true;});document.body.classList.remove('menu-open');};
+toggleButtons.forEach(b=>b.addEventListener('click',()=>{const panel=document.getElementById(b.dataset.menuTarget);if(!panel)return;const open=panel.hidden;closeAll();if(open){panel.hidden=false;b.setAttribute('aria-expanded','true');b.setAttribute('aria-label','Cerrar menú de navegación');document.body.classList.add('menu-open');}}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))closeAll();});let oldWidth=window.innerWidth;window.addEventListener('resize',()=>{if(window.innerWidth!==oldWidth){oldWidth=window.innerWidth;closeAll();}});
+const filters=[...document.querySelectorAll('[data-filter]')],photos=[...document.querySelectorAll('.gallery-card[data-kind]')];
+filters.forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.filter;filters.forEach(x=>{x.classList.toggle('is-active',x===b);x.setAttribute('aria-pressed',String(x===b));});photos.forEach(x=>{x.hidden=k!=='todos'&&x.dataset.kind!==k;});}));
+const dlg=document.querySelector('#work-lightbox');if(dlg){const im=dlg.querySelector('img'),caption=dlg.querySelector('.lightbox-caption'),close=dlg.querySelector('.lightbox-close');let last=null;photos.forEach(b=>b.addEventListener('click',()=>{last=b;im.src=b.dataset.photo;im.alt=b.dataset.alt||'Fotografía de trabajo real';caption.textContent=im.alt;dlg.showModal();close.focus();}));close.addEventListener('click',()=>dlg.close());dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});dlg.addEventListener('close',()=>{im.removeAttribute('src');if(last)last.focus();});}
+const form=document.querySelector('#quote-form');if(form)form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;const d=new FormData(form),text=['Consulta para CABELLO | Cocinas & Interiores',`Nombre: ${d.get('nombre')||''}`,`Teléfono: ${d.get('telefono')||'No indicado'}`,`Servicio: ${d.get('servicio')||''}`,`Zona: ${d.get('zona')||'No indicada'}`,`Presupuesto: ${d.get('presupuesto')||'No indicado'}`,`Detalles: ${d.get('detalles')||''}`].join('\n');const out=document.getElementById('form-feedback');try{await navigator.clipboard.writeText(text);out.textContent='Consulta copiada. No se ha enviado: podrás compartirla cuando se active el contacto comercial.';}catch{const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();let ok=false;try{ok=document.execCommand('copy');}catch{}t.remove();out.textContent=ok?'Consulta copiada. No se ha enviado.':'Tu consulta no se ha enviado. Puedes copiar los datos del formulario manualmente.';}});
 })();
